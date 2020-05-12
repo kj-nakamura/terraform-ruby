@@ -19,7 +19,8 @@ jobs:
       - save_cache:
         paths:
           - ./vendor/bundle
-        key: v1-dependencies-{{ checksum "Gemfile.lock" }} - run: bundle exec rake db:create
+        key: v1-dependencies-{{ checksum "Gemfile.lock" }} 
+      - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       - run:
           name: run tests
