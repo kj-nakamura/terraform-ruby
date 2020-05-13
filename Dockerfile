@@ -17,6 +17,12 @@ RUN \
     bundle install && \
     rm -rf ~/.gem
 ADD . $APP_ROOT
+RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y yarn && apt-get install -y vim
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+    apt-get install nodejs
 # RAILS_ENV が production のとき assets:precompile を実行するようにしています
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 EXPOSE 3000
