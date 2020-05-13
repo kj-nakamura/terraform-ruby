@@ -12,6 +12,7 @@ WORKDIR $APP_ROOT
 ADD Gemfile $APP_ROOT
 # CMD ["pwd"]
 ADD Gemfile.lock $APP_ROOT
+RUN gem install bundler
 RUN \
     bundle install && \
     rm -rf ~/.gem
