@@ -17,7 +17,7 @@ RUN \
     bundle install && \
     rm -rf ~/.gem
 ADD . $APP_ROOT
-RUN yarn upgrade
+RUN yarn install
 # RAILS_ENV が production のとき assets:precompile を実行するようにしています
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 EXPOSE 3000
