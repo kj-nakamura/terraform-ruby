@@ -28,6 +28,11 @@ jobs:
           name: run tests
           command: |
             DISABLE_SPRING=true bundle exec rails test
+      - run: exit 0
+      - slack/status:
+          fail_only: false
+          only_for_branches: master
+          webhook: webhook
   build_image:
     docker:
       - image: docker:18.09.0
