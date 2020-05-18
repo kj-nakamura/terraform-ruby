@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node-browsers 
+      - image: circleci/ruby:2.6.3-stretch-node
         environment:
           RAILS_ENV: test 
           DB_USERNAME: root 
@@ -16,9 +16,6 @@ jobs:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes 
     working_directory: ~/repo
-  build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
     executor: ruby/default
     steps:
       - checkout
