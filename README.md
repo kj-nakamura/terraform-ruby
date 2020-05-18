@@ -7,7 +7,12 @@ Things you may want to cover:
 
 * Ruby version
 
+ruby-2.6.3
+
 * System dependencies
+
+image:ruby:2.6.3-stretch-node
+db:mysql
 
 * Configuration
 
